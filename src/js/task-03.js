@@ -14,19 +14,12 @@ const images = [
 ];
 const newItemGallery = (images) => {
     const list = document.querySelector('.gallery')
-    const array = [];
-    for(const image of images){
-      const item = document.createElement(`li`);
-      item.classList.add('gallery__item');
-      const img = document.createElement(`img`)
-      img.setAttribute('src', image.url);
-      img.setAttribute('alt', image.alt);
-      img.setAttribute('width', "300");
-      item.append(img);
-      array.push(item);
+    let htmlText = '';
 
+    for(const image of images){
+      htmlText += `<li class="gallery__item" > <img src="${image.url}" alt="${image.alt}" width="300px"></li>`;
     }
     list.setAttribute('style', "display: flex; list-style-type: none;");
-    list.append(...array);
+    list.insertAdjacentHTML('beforeend',htmlText);
 }
 newItemGallery(images);
